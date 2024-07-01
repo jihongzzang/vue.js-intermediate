@@ -4,29 +4,46 @@
     <span class="addContainer addBtn" @click="addTodo">
       <i class="fa-solid fa-plus"></i>
     </span>
+
+    <Modal v-show="showModal" @close="showModal = false">
+      <template v-slot:header>
+        <h3>경고! <i class="closeModalBtn fa-solid fa-xmark" @click="showModal = false"></i></h3>
+      </template>
+      <template v-slot:body>아무것도 입력하지 않았습니다.</template>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from '../common/Modal.vue';
+
 export default {
   data() {
     return {
       newTodoItem: '',
+      showModal: false,
     };
   },
 
   methods: {
     addTodo() {
       if (!this.newTodoItem.trim()) {
+        this.showModal = !this.showModal;
         return;
       }
+
       this.$emit('addTodoItem', this.newTodoItem);
+
       this.clearInput();
     },
 
     clearInput() {
       this.newTodoItem = '';
     },
+  },
+
+  components: {
+    Modal: Modal,
   },
 };
 </script>
@@ -59,5 +76,9 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+
+.closeModalBtn {
+  color: #42b983;
 }
 </style>

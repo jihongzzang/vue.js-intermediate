@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <TransitionGroup tag="ul" name="list">
       <li v-for="(todoItem, index) in propsdata" :key="todoItem.item" class="shadow">
         <i
           class="checkBtn fa-solid fa-check"
@@ -12,13 +12,16 @@
           <i class="fa-solid fa-trash"></i>
         </span>
       </li>
-    </ul>
+    </TransitionGroup>
   </div>
 </template>
 
 <script>
+import { TransitionGroup } from 'vue';
+
 export default {
   props: ['propsdata'],
+
   methods: {
     removeTodo(_, index) {
       this.$emit('removeItem', index);
@@ -28,6 +31,7 @@ export default {
       this.$emit('toggleItem', index);
     },
   },
+  components: { TransitionGroup: TransitionGroup },
 };
 </script>
 
@@ -68,5 +72,19 @@ li {
 .textCompleted {
   text-decoration: line-through;
   color: #b3adad;
+}
+
+/* 리스트 아이템 트랜지션 효과 */
+/* 1. declare transition */
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
