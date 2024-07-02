@@ -23,7 +23,11 @@ export default createStore({
   state: { todoItems: storage.fetch() },
 
   /** operated State get, computed */
-  getters: {},
+  getters: {
+    storedTodoItems(state) {
+      return state.todoItems;
+    },
+  },
 
   /** operating State, methods */
   mutations: {
@@ -43,13 +47,17 @@ export default createStore({
       localStorage.setItem('todoItems', JSON.stringify(state.todoItems));
     },
 
-    removeOneItem(state, index) {
+    removeOneItem(state, payload) {
+      const { index } = payload;
+
       state.todoItems.splice(index, 1);
 
       localStorage.setItem('todoItems', JSON.stringify(state.todoItems));
     },
 
-    toggleOneItem(state, index) {
+    toggleOneItem(state, payload) {
+      const { index } = payload;
+
       state.todoItems[index].completed = !state.todoItems[index].completed;
 
       localStorage.setItem('todoItems', JSON.stringify(state.todoItems));
