@@ -6,13 +6,9 @@ const storage = {
 
     const savedItems = localStorage.getItem('todoItems');
 
-    console.log(savedItems);
-
     if (savedItems) {
       arr = JSON.parse(savedItems);
     }
-
-    console.log(arr);
 
     return arr;
   },
@@ -32,7 +28,6 @@ export default createStore({
   /** operating State, methods */
   mutations: {
     addOneItem(state, todoItem) {
-      console.log(state, todoItem);
       const exists = state.todoItems.some((item) => item.item === todoItem);
 
       if (exists) {
