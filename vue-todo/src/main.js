@@ -1,5 +1,15 @@
 import { createApp } from 'vue';
 
-import App from './App.vue';
+/** if not use Vuex */
 
-createApp(App).mount('#app');
+// import App from './App.vue';
+
+// createApp(App).mount('#app');
+
+/** if use Vuex */
+
+import store from './store';
+
+import App from './AppVuex.vue';
+
+createApp(App).use(store).mount('#app');
