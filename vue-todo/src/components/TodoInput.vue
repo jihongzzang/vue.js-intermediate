@@ -21,7 +21,7 @@ export default {
         return;
       }
 
-      var obj = { comleted: false, item: this.newTodoItem };
+      const obj = { comleted: false, item: this.newTodoItem };
 
       localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
 

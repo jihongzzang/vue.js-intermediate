@@ -31,7 +31,7 @@ export default {
       this.$emit('toggleItem', index);
     },
   },
-  components: { TransitionGroup: TransitionGroup },
+  components: { TransitionGroup },
 };
 </script>
 

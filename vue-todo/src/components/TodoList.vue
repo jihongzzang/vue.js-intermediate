@@ -29,8 +29,8 @@ export default {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
-    // eslint-disable-next-line no-unused-vars
-    toggleComplete(todoItem, index) {
+
+    toggleComplete(todoItem) {
       todoItem.completed = !todoItem.completed;
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
@@ -40,7 +40,7 @@ export default {
   /**instance 생성시점에 실행되는 lifeCycle */
   created() {
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
       }
     }

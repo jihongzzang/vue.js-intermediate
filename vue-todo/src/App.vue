@@ -29,7 +29,7 @@ export default {
         return;
       }
 
-      var obj = { completed: false, item: todoItem };
+      const obj = { completed: false, item: todoItem };
       this.todoItems.push(obj);
       this.saveTodoItems();
     },
@@ -72,10 +72,10 @@ export default {
   },
 
   components: {
-    TodoHeader: TodoHeader,
-    TodoInput: TodoInput,
-    TodoList: TodoList,
-    TodoFooter: TodoFooter,
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter,
   },
 };
 </script>
