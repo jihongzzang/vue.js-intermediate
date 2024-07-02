@@ -8,6 +8,7 @@
 </template>
 
 <script>
+// import { watch } from 'vue';
 export default {
   props: ['todoItems'],
 
@@ -15,6 +16,11 @@ export default {
     const removeTodo = (item, index) => {
       context.emit('remove', item, index);
     };
+
+    //react useEffect 와 비슷하다. sideEffect
+    // watch(props.todoItems, (newValue) => {
+    //   console.log({ newValue });
+    // });
 
     return { removeTodo };
   },
