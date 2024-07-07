@@ -7,8 +7,30 @@
 <script>
 import ListItem from '@/components/ListItem.vue';
 
+import bus from '@/utils/bus';
+
 export default {
   components: { ListItem },
+
+  created() {
+    bus.$emit('start:spinner');
+
+    setTimeout(() => {
+      const name = this.$route.name;
+
+      const actionName = `FETCH_${name.toUpperCase()}`;
+
+      this.$store
+        .dispatch(actionName)
+        .then(() => {
+          console.log('fetched');
+          bus.$emit('end:spinner');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 3000);
+  },
 };
 </script>
 

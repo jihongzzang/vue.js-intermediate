@@ -42,14 +42,6 @@ export default {
       return this.$store.state[name];
     },
   },
-
-  created() {
-    const name = this.$route.name;
-
-    const actionName = `FETCH_${name.toUpperCase()}`;
-
-    this.$store.dispatch(actionName);
-  },
 };
 </script>
 
