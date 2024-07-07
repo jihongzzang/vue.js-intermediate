@@ -1,19 +1,14 @@
 <template>
   <div>
     <section>
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-description">
-          <router-link :to="`/user/${item.user}`">
-            {{ item.user }}
-          </router-link>
-          <div class="time">
-            {{ item.time_ago }}
-          </div>
-        </div>
-      </div>
+      <UserProfile :info="item">
+        <router-link slot="username" :to="`/user/${item.user}`">
+          {{ item.user }}
+        </router-link>
+        <template slot="time">posted {{ item.time_ago }} </template>
+      </UserProfile>
+    </section>
+    <section>
       <h2>
         {{ item.title }}
       </h2>
@@ -27,7 +22,11 @@
 <script>
 import { mapGetters } from 'vuex';
 
+import UserProfile from '@/components/UserProfile.vue';
+
 export default {
+  components: { UserProfile },
+
   computed: {
     ...mapGetters({ item: 'fetchedItem' }),
   },
@@ -35,29 +34,9 @@ export default {
   created() {
     const itemId = this.$route.params.id;
 
-    console.log(this.$route);
-
     this.$store.dispatch('FETCH_ITEM', itemId);
   },
 };
 </script>
 
-<style scoped>
-.user-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-}
-
-.fa-user {
-  font-size: 2.5rem;
-}
-
-.user-description {
-  padding-left: 8px;
-}
-
-.time {
-  font-size: 0.7rem;
-}
-</style>
+<style scoped></style>
