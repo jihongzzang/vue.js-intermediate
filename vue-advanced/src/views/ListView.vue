@@ -11,5 +11,3 @@ export default {
   components: { ListItem },
 };
 </script>
-
-<style></style>
