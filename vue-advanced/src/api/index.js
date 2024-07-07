@@ -1,3 +1,4 @@
+import { handleException } from '@/utils/handler';
 import axios from 'axios';
 
 // 1. HTTP Request & Response와 관련된 기본 설정
@@ -6,22 +7,40 @@ const config = {
   lastPrefix: '/1.json',
 };
 
-function fetchList(pageName) {
+async function fetchList(pageName) {
   const { baseUrl, lastPrefix } = config;
 
-  return axios.get(`${baseUrl}${pageName}${lastPrefix}`);
+  try {
+    const response = axios.get(`${baseUrl}${pageName}${lastPrefix}`);
+
+    return response;
+  } catch (error) {
+    handleException(error);
+  }
 }
 
-function fetchUserInfo(username) {
+async function fetchUserInfo(username) {
   const { baseUrl } = config;
 
-  return axios.get(`${baseUrl}user/${username}.json`);
+  try {
+    const response = axios.get(`${baseUrl}user/${username}.json`);
+
+    return response;
+  } catch (error) {
+    handleException(error);
+  }
 }
 
-function fetchCommentItem(id) {
+async function fetchCommentItem(id) {
   const { baseUrl } = config;
 
-  return axios.get(`${baseUrl}item/${id}.json`);
+  try {
+    const response = axios.get(`${baseUrl}item/${id}.json`);
+
+    return response;
+  } catch (error) {
+    handleException(error);
+  }
 }
 
 export { fetchList, fetchUserInfo, fetchCommentItem };
