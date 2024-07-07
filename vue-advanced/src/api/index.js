@@ -12,4 +12,16 @@ function fetchList(sth) {
   return axios.get(`${baseUrl}${sth}${lastPrefix}`);
 }
 
-export { fetchList };
+function fetchUserInfo(username) {
+  const { baseUrl } = config;
+
+  return axios.get(`${baseUrl}user/${username}.json`);
+}
+
+function fetchCommentItem(id) {
+  const { baseUrl } = config;
+
+  return axios.get(`${baseUrl}item/${id}.json`);
+}
+
+export { fetchList, fetchUserInfo, fetchCommentItem };

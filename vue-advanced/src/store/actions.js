@@ -1,4 +1,4 @@
-import { fetchList } from '@/api';
+import { fetchCommentItem, fetchList, fetchUserInfo } from '@/api';
 
 export default {
   FETCH_NEWS({ commit }) {
@@ -20,6 +20,22 @@ export default {
   FETCH_ASK({ commit }) {
     fetchList('ask')
       .then(({ data }) => commit('SET_ASK', data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+
+  FETCH_USER({ commit }, name) {
+    fetchUserInfo(name)
+      .then(({ data }) => commit('SET_USER', data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+
+  FETCH_ITEM({ commit }, id) {
+    fetchCommentItem(id)
+      .then(({ data }) => commit('SET_ITEM', data))
       .catch((err) => {
         console.log(err);
       });

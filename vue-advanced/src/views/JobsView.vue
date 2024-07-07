@@ -2,7 +2,10 @@
   <div>
     <p v-for="job in fetchedJobs" :key="job.title">
       <a :href="job.url"> {{ job.title }}</a>
-      <small>{{ job.time_ago }} {{ job.domain }}</small>
+      <small>
+        {{ job.time_ago }} by
+        {{ job.domain }}
+      </small>
     </p>
   </div>
 </template>
