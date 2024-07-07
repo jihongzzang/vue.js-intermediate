@@ -11,6 +11,10 @@ export default {
     return state.ask;
   },
 
+  fetchedList(state) {
+    return state.list;
+  },
+
   fetchedUser(state) {
     return state.user;
   },

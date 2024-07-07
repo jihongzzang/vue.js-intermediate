@@ -11,6 +11,10 @@ export default {
     state.ask = asks;
   },
 
+  SET_LIST(state, list) {
+    state.list = list;
+  },
+
   SET_USER(state, user) {
     state.user = user;
   },

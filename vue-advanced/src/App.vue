@@ -39,12 +39,10 @@ export default {
 
   created() {
     bus.$on('start:spinner', () => {
-      console.log('start 실행');
       this.startSpinner();
     });
 
     bus.$on('end:spinner', () => {
-      console.log('end 실행');
       this.endSpinner();
     });
   },

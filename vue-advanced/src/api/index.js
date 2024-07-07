@@ -6,10 +6,10 @@ const config = {
   lastPrefix: '/1.json',
 };
 
-function fetchList(sth) {
+function fetchList(pageName) {
   const { baseUrl, lastPrefix } = config;
 
-  return axios.get(`${baseUrl}${sth}${lastPrefix}`);
+  return axios.get(`${baseUrl}${pageName}${lastPrefix}`);
 }
 
 function fetchUserInfo(username) {
