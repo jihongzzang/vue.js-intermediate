@@ -21,17 +21,17 @@ const router = new VueRouter({
     {
       path: '/news',
       name: 'news',
-      component: createListView('news'),
+      component: createListView('NewsView'),
     },
     {
       path: '/jobs',
       name: 'jobs',
-      component: createListView('jobs'),
+      component: createListView('JobsView'),
     },
     {
       path: '/ask',
       name: 'ask',
-      component: createListView('ask'),
+      component: createListView('AskView'),
     },
 
     {
