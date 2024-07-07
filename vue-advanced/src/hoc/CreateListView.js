@@ -7,13 +7,12 @@ export default function createListView(name) {
 
   return {
     name,
-
     created() {
       bus.$emit('start:spinner');
 
       setTimeout(() => {
         this.$store
-          .dispatch('FETCH_LIST', this.$route.name)
+          .dispatch('FETCH_LIST', this.s$route.name)
           .then(() => {
             console.log('fetched');
             bus.$emit('end:spinner');
