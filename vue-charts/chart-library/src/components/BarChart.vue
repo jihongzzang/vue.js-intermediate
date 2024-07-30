@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <h1>Chart.js</h1>
-    <BarChart />
-  </div>
+  <canvas id="myChart" width="400" height="400"></canvas>
 </template>
 
 <script>
 import { Chart, registerables } from 'chart.js';
 
-import BarChart from './components/BarChart.vue';
-
 export default {
-  components: { BarChart },
-
   mounted() {
     Chart.register(...registerables);
 
@@ -41,3 +34,5 @@ export default {
   },
 };
 </script>
+
+<style></style>
