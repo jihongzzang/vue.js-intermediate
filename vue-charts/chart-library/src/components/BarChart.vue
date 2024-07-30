@@ -1,5 +1,5 @@
 <template>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="barChart" width="400" height="400"></canvas>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
   mounted() {
     Chart.register(...registerables);
 
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('barChart');
 
     new Chart(ctx, {
       type: 'bar',
@@ -24,6 +24,7 @@ export default {
         ],
       },
       options: {
+        responsive: false,
         scales: {
           y: {
             beginAtZero: true,

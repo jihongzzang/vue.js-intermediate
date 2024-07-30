@@ -2,6 +2,7 @@
   <div>
     <h1>Chart.js</h1>
     <BarChart />
+    <LineChart />
   </div>
 </template>
 
@@ -10,8 +11,10 @@ import { Chart, registerables } from 'chart.js';
 
 import BarChart from './components/BarChart.vue';
 
+import LineChart from './components/LineChart.vue';
+
 export default {
-  components: { BarChart },
+  components: { BarChart, LineChart },
 
   mounted() {
     Chart.register(...registerables);
